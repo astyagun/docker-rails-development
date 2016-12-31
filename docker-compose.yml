@@ -1,0 +1,32 @@
+version: '2.1'
+services:
+  rails:
+    build:
+      context: .
+      dockerfile: rails.dockerfile
+    volumes:
+      - .:/usr/src/app
+      - bundle:/usr/local/bundle
+    ports:
+      - "${PORT:-3000}:3000" # $PORT is provided by Hotel
+    links:
+      - postgres
+
+  test:
+    build:
+      context: .
+      dockerfile: test.dockerfile
+    volumes:
+      - .:/usr/src/app
+      - bundle:/usr/local/bundle
+    links:
+      - postgres
+
+  postgres:
+    image: postgres:9.6
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+  bundle:
+  postgres:
