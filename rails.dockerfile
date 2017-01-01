@@ -8,4 +8,4 @@ RUN apt-get update \
 WORKDIR /usr/src/app
 
 EXPOSE 3000
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD rm -f tmp/pids/server.pid; rails server --binding 0.0.0.0
