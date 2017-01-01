@@ -12,10 +12,10 @@ services:
     links:
       - postgres
 
-  test:
+  spring:
     build:
       context: .
-      dockerfile: test.dockerfile
+      dockerfile: spring.dockerfile
     volumes:
       - .:/usr/src/app
       - bundle:/usr/local/bundle
