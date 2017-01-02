@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+FILES = %w(docker-compose.yml *.dockerfile)
+HELP_MESSAGE = <<-HLP
+
+Usage: ../docker-rails-development/install
+
+Run this script being in destination directory to copy Docker files into it
+
+HLP
+
+source_directory      = File.dirname File.expand_path __FILE__
+destination_directory = Dir.pwd
+
+if destination_directory == source_directory
+  puts "Error: won't copy files into the same directory"
+  puts HELP_MESSAGE
+  exit 1
+end
+
+FILES.each do |file_glob|
+  source_file = Dir.glob File.join(source_directory, file_glob)
+  FileUtils.cp source_file, destination_directory, verbose: true
+end
