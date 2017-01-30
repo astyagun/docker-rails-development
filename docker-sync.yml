@@ -1,0 +1,5 @@
+syncs:
+  myapp_code:
+    sync_strategy: unison
+    src: .
+    dest: /usr/src/app

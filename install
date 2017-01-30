@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'fileutils'
 
-FILES = %w(docker-compose.yml *.dockerfile)
+FILES = %w(docker-sync.yml docker-compose.yml *.dockerfile)
 HELP_MESSAGE = <<-HLP
 
 Usage: ../docker-rails-development/install

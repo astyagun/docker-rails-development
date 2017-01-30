@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: rails.dockerfile
     volumes:
-      - .:/usr/src/app
+      - code:/usr/src/app
       - bundle:/usr/local/bundle
     ports:
       - "${PORT:-3000}:3000" # $PORT is provided by Hotel
@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: spring.dockerfile
     volumes:
-      - .:/usr/src/app
+      - code:/usr/src/app
       - bundle:/usr/local/bundle
     links:
       - postgres
@@ -28,5 +28,6 @@ services:
       - postgres:/var/lib/postgresql/data
 
 volumes:
+  code:
   bundle:
   postgres:
