@@ -1,3 +1,4 @@
+version: '2'
 syncs:
   myapp_code:
     sync_strategy: unison

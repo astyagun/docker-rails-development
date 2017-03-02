@@ -15,7 +15,7 @@ Docker based Rails development environment
 ## Usage
 
 ```sh
-docker-sync start & # Start Unison sync container as a background job
+docker-sync start --daemon # Start Unison sync container as a background job
 docker-compose up
 ```
 
