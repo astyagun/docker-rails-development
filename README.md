@@ -15,14 +15,18 @@ Docker based Rails development environment
 ## Usage
 
 ```sh
-docker-sync start --daemon # Start Unison sync container as a background job
+# Both commands are blocking, I use separate Terminal tabs to run them
+docker-sync start
 docker-compose up
 ```
 
 ## Useful aliases
 
 ```sh
+alias doc=docker-compose
 alias dr='docker-compose run --rm rails'     # Example: dr bundle install
-alias de='docker-compose exec spring'        # Example: de rake db:migrate
 alias ds='docker-compose exec spring spring' # Example: ds rspec
+alias der='docker-compose exec rails'        # Example: de rake db:migrate
+alias des='docker-compose exec spring'       # Example: de rake db:migrate
+alias rspec='ds rspec'
 ```
