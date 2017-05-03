@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3'
 services:
   rails:
     build:
@@ -9,7 +9,7 @@ services:
       - bundle:/usr/local/bundle
     ports:
       - "${PORT:-3000}:3000" # $PORT is provided by Hotel
-    links:
+    depends_on:
       - postgres
 
   spring:
@@ -19,7 +19,7 @@ services:
     volumes:
       - code:/usr/src/app
       - bundle:/usr/local/bundle
-    links:
+    depends_on:
       - postgres
 
   postgres:
