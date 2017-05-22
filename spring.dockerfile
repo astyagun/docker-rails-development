@@ -11,6 +11,9 @@ RUN mkdir /tmp/phantomjs \
   | tar -xj --strip-components=1 -C /tmp/phantomjs \
   && mv /tmp/phantomjs/bin/phantomjs /usr/local/bin
 
+RUN adduser --disabled-password --gecos "" myuser
+USER myuser
+
 WORKDIR /usr/src/app
 
 CMD ["spring", "server"]

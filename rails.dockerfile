@@ -5,6 +5,9 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends nodejs \
   && rm -rf /var/lib/apt/lists/*
 
+RUN adduser --disabled-password --gecos "" myuser
+USER myuser
+
 WORKDIR /usr/src/app
 
 EXPOSE 3000
