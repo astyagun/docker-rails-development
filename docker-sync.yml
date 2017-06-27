@@ -5,3 +5,8 @@ syncs:
     src: .
     sync_userid: 1000
     sync_groupid: 1000
+    sync_args:
+        - "-ignore='Path .git'"           # Ignore the main .git repo
+        - "-ignore='BelowPath .git'"      # Also ignore .git repos in subfolders such as in composer vendor dirs
+        - "-ignore='Path .gitignore'"
+        - "-ignore='Path tmp'"
