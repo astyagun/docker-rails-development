@@ -23,9 +23,8 @@ docker-compose up
 ## Useful aliases
 
 ```sh
-alias dr='docker-compose run --rm rails'     # Example: dr bundle install
-alias ds='docker-compose exec spring spring' # Example: ds rspec
+alias dr='docker-compose run --rm rails' # Example: dr bundle install
+alias dt='docker-compose exec tests spring'
 alias der='docker-compose exec rails'
-alias des='docker-compose exec spring'
-alias rspec='ds rspec'
-```
+alias det='docker-compose exec tests'
+alias rspec='dt rspec'

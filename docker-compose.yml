@@ -12,10 +12,10 @@ services:
     depends_on:
       - postgres
 
-  spring:
+  tests:
     build:
       context: .
-      dockerfile: spring.dockerfile
+      dockerfile: tests.dockerfile
     volumes:
       - code:/usr/src/app:nocopy
       - bundle:/usr/local/bundle
