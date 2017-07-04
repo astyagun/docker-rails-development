@@ -18,4 +18,5 @@ RUN bundle config jobs 4
 
 WORKDIR /usr/src/app
 
-CMD ["spring", "server"]
+ENTRYPOINT ["spring"]
+CMD ["server"]
