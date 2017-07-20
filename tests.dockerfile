@@ -15,6 +15,7 @@ RUN adduser --disabled-password --gecos "" myuser
 USER myuser
 
 RUN bundle config jobs 4
+RUN echo 'alias rspec='"spring rspec'"' >> ~/.bashrc
 
 WORKDIR /usr/src/app
 
