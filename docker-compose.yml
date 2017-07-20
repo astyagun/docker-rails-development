@@ -3,12 +3,24 @@ services:
   web:
     build:
       context: .
-      dockerfile: web.dockerfile
+      dockerfile: rails.dockerfile
     volumes:
       - code:/usr/src/app:nocopy
       - bundle:/usr/local/bundle
     ports:
       - "${PORT:-3000}:3000" # $PORT is provided by Hotel
+    depends_on:
+      - postgres
+      - redis
+
+  sidekiq:
+    build:
+      context: .
+      dockerfile: rails.dockerfile
+    command: sidekiq -C config/sidekiq.yml.erb
+    volumes:
+      - code:/usr/src/app:nocopy
+      - bundle:/usr/local/bundle
     depends_on:
       - postgres
       - redis
