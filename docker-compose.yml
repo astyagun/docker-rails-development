@@ -1,9 +1,9 @@
 version: '3'
 services:
-  rails:
+  web:
     build:
       context: .
-      dockerfile: rails.dockerfile
+      dockerfile: web.dockerfile
     volumes:
       - code:/usr/src/app:nocopy
       - bundle:/usr/local/bundle
