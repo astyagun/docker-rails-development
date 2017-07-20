@@ -19,12 +19,14 @@ Docker based Rails development environment
 * Generate a new Rails application and install Spring to run tests. Customize `rails new` command as needed.
   ```sh
   APP_NAME=`basename $(pwd)`
+  docker-sync start
   docker-compose run --rm web rails new $APP_NAME
   mv $APP_NAME/* $APP_NAME/.* .
   rm -rf $APP_NAME/
   ```
 * If you already have existing Rails application and have Spring in `Gemfile`, then you only need to run
   ```sh
+  docker-sync start
   docker-compose up -d # This will return errors, because there are no required executables in containers yet
   docker-compose run --rm web bundle install
   ```
