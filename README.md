@@ -52,9 +52,9 @@ Following aliases depend on these: https://github.com/sorin-ionescu/prezto/tree/
 
 ```sh
 alias dt='dkce tests'
-alias rspec='dt bash -ic rspec'
 alias start='docker-sync start &; dkc up -d'
 alias stop='docker-sync stop &; dkc stop'
 alias down='dkc down; docker-sync clean'
 alias dsr='docker-sync stop && docker-sync start'
+function rspec() { dt bash -ic "rspec $*" }
 ```
