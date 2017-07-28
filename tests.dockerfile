@@ -2,7 +2,7 @@ FROM ruby:2.4
 
 # Install NodeJS
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends nodejs \
+  && apt-get install -y --no-install-recommends nodejs vim \
   && rm -rf /var/lib/apt/lists/*
 
 # Install PhantomJS
@@ -15,6 +15,9 @@ RUN adduser --disabled-password --gecos "" myuser
 USER myuser
 
 RUN bundle config jobs 4
+
+RUN echo set shiftwidth=2 tabstop=2 softtabstop=2 expandtab > ~/.vimrc
+ENV EDITOR=vim
 
 WORKDIR /usr/src/app
 
