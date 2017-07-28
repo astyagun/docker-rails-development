@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: rails.dockerfile
+    env_file: .env
     volumes:
       - code:/usr/src/app:nocopy
       - bundle:/usr/local/bundle
@@ -17,7 +18,8 @@ services:
     build:
       context: .
       dockerfile: rails.dockerfile
-    command: sidekiq -C config/sidekiq.yml.erb
+    env_file: .env
+    command: sidekiq -q default -q mailers
     volumes:
       - code:/usr/src/app:nocopy
       - bundle:/usr/local/bundle
