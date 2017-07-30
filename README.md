@@ -56,5 +56,5 @@ alias start='docker-sync start &; dkc up -d &; wait'
 alias stop='docker-sync stop &; dkc stop &; wait'
 alias down='dkc down; docker-sync clean'
 alias dsr='docker-sync stop && docker-sync start'
-function rspec() { dt bash -ic "rspec $*" }
+function rspec() { dt bash -ic "./bin/rspec $*" }
 ```
