@@ -16,7 +16,12 @@ USER myuser
 
 RUN bundle config jobs 4
 
-RUN echo set shiftwidth=2 tabstop=2 softtabstop=2 expandtab > ~/.vimrc
+RUN echo "\
+syntax on\n\
+filetype plugin indent on\n\
+set shiftwidth=2 tabstop=2 softtabstop=2 expandtab number laststatus=2 title hlsearch incsearch\n\
+autocmd BufRead *.yml.enc set filetype=eruby.yaml\n"\
+> ~/.vimrc
 ENV EDITOR=vim
 
 WORKDIR /usr/src/app
