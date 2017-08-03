@@ -36,7 +36,7 @@ Docker based Rails development environment
 Having below aliases defined, run in the shell:
 
 ```sh
-start
+up
 ```
 
 Otherwise:
@@ -52,6 +52,7 @@ Following aliases depend on these: https://github.com/sorin-ionescu/prezto/tree/
 
 ```sh
 alias dt='dkce tests'
+alias up='docker-sync start; dkc up -d'
 alias start='docker-sync start &; dkc up -d &; wait'
 alias stop='docker-sync stop &; dkc stop &; wait'
 alias down='dkc down; docker-sync clean'
