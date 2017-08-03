@@ -1,3 +1,4 @@
+---
 version: '2'
 syncs:
   # TODO Replace myapp with the compose project name

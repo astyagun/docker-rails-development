@@ -1,3 +1,4 @@
+---
 version: '3'
 services:
   web:
@@ -9,7 +10,7 @@ services:
       - code:/usr/src/app:nocopy
       - bundle:/usr/local/bundle
     ports:
-      - "${PORT:-3000}:3000" # $PORT is provided by Hotel
+      - "${PORT:-3000}:3000"  # $PORT is provided by Hotel
     depends_on:
       - postgres
       - redis
