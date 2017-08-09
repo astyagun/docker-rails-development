@@ -59,3 +59,19 @@ alias down='dkc down; docker-sync clean'
 alias dsr='docker-sync stop && docker-sync start'
 function rspec() { dt bash -ic "./bin/rspec $*" }
 ```
+
+## Files and directories to add to .gitignore
+
+```
+# Docker
+/.docker-sync/
+```
+
+And these, if you don't want to commit anything related to Docker into the repository:
+
+```
+/*.dockerfile
+/.env
+/docker-compose.yml
+/docker-sync.yml
+```
