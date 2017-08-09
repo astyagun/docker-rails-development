@@ -2,7 +2,8 @@ FROM ruby:2.4
 
 # Install NodeJS
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends nodejs \
+  && apt-get install -y --no-install-recommends \
+  nodejs \
   && rm -rf /var/lib/apt/lists/*
 
 RUN adduser --disabled-password --gecos "" myuser
