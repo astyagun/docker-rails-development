@@ -1,6 +1,5 @@
 FROM ruby:2.4
 
-# Install NodeJS
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
   nodejs \
