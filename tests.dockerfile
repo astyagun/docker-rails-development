@@ -2,8 +2,10 @@ FROM ruby:2.4
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+  \
   nodejs \
   vim \
+  \
   && rm -rf /var/lib/apt/lists/*
 
 # Install PhantomJS
