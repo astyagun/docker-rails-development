@@ -5,6 +5,7 @@ RUN apt-get update \
   \
   nodejs \
   vim \
+  less \
   \
   && rm -rf /var/lib/apt/lists/*
 
