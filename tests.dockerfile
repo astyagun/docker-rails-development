@@ -28,6 +28,8 @@ autocmd BufRead *.yml.enc set filetype=eruby.yaml\n"\
 > ~/.vimrc
 ENV EDITOR=vim
 
+RUN unset HTTP_PROXY http_proxy
+
 WORKDIR /usr/src/app
 
 ENTRYPOINT ["spring"]

@@ -12,6 +12,8 @@ USER myuser
 
 RUN bundle config jobs 4
 
+RUN unset HTTP_PROXY http_proxy
+
 WORKDIR /usr/src/app
 
 EXPOSE 3000
