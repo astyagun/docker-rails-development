@@ -12,8 +12,8 @@ RUN adduser --disabled-password --gecos "" myuser
 USER myuser
 
 # Various settings
-RUN bundle config jobs 4
-RUN unset HTTP_PROXY http_proxy
+RUN bundle config jobs 4; \
+  unset HTTP_PROXY http_proxy
 
 WORKDIR /usr/src/app
 
