@@ -15,11 +15,11 @@ RUN mkdir /tmp/phantomjs \
   | tar -xj --strip-components=1 -C /tmp/phantomjs \
   && mv /tmp/phantomjs/bin/phantomjs /usr/local/bin
 
+# Create user
 RUN adduser --disabled-password --gecos "" myuser
 USER myuser
 
-RUN bundle config jobs 4
-
+# Vim
 RUN echo "\
 syntax on\n\
 filetype plugin indent on\n\
@@ -28,6 +28,8 @@ autocmd BufRead *.yml.enc set filetype=eruby.yaml\n"\
 > ~/.vimrc
 ENV EDITOR=vim
 
+# Various settings
+RUN bundle config jobs 4
 RUN unset HTTP_PROXY http_proxy
 
 WORKDIR /usr/src/app
