@@ -29,8 +29,7 @@ autocmd BufRead *.yml.enc set filetype=eruby.yaml\n"\
 ENV EDITOR=vim
 
 # Various settings
-RUN bundle config jobs 4; \
-  unset HTTP_PROXY http_proxy
+RUN bundle config jobs 4
 
 WORKDIR /usr/src/app
 
