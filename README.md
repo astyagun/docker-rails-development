@@ -2,6 +2,8 @@
 
 Docker based Rails development environment
 
+Depends on [docker-sync](http://docker-sync.io) to share source code between host and containers. At least until the native solution is as fast on macOS (see related Docker for Mac [issue](https://github.com/docker/for-mac/issues/77)).
+
 ## Installation
 
 * Clone this repository into directory next to the directory of your project
