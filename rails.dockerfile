@@ -8,8 +8,8 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Create user
-RUN adduser --disabled-password --gecos "" myuser
-USER myuser
+RUN adduser --disabled-password --gecos "" app
+USER app
 
 # Various settings
 RUN bundle config jobs 4
