@@ -16,7 +16,7 @@ RUN mkdir /tmp/phantomjs \
   && mv /tmp/phantomjs/bin/phantomjs /usr/local/bin
 
 # Create user
-RUN adduser --disabled-password --gecos "" app
+RUN adduser --disabled-password --gecos '' app
 USER app
 
 # Vim

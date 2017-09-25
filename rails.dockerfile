@@ -8,7 +8,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Create user
-RUN adduser --disabled-password --gecos "" app
+RUN adduser --disabled-password --gecos '' app
 USER app
 
 # Various settings
