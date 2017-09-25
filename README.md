@@ -17,13 +17,13 @@ Depends on [docker-sync](http://docker-sync.io) to share source code between hos
 * Install Rails gem from a container
   ```sh
   docker-compose up -d # This will return errors, because there are no required executables in containers yet
-  docker-compose run --rm web gem install rails
+  docker-compose run --rm tests gem install rails
   ```
 * Generate a new Rails application and install bundled gems. Customize `rails new` command as needed.
   ```sh
   APP_NAME=`basename $(pwd)`
   docker-sync start
-  docker-compose run --rm web rails new $APP_NAME
+  docker-compose run --rm tests rails new $APP_NAME
   mv $APP_NAME/* $APP_NAME/.* .
   rm -rf $APP_NAME/
   ```
@@ -31,7 +31,7 @@ Depends on [docker-sync](http://docker-sync.io) to share source code between hos
   ```sh
   docker-sync start
   docker-compose up -d # This will return errors, because there are no required executables in containers yet
-  docker-compose run --rm web bundle install
+  docker-compose run --rm tests bundle install
   ```
 
 ## Usage
