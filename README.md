@@ -9,6 +9,7 @@ Depends on [docker-sync](http://docker-sync.io) to share source code between hos
 * Clone this repository into directory next to the directory of your project
 * `cd` into your project directory
 * Run `../docker-rails-development/install`
+* Update Ruby version in `*.dockerfile` files
 * Replace `myapp` with your app name (as used in Docker Compose container names) in `docker-sync.yml` file
 * Install dependencies
   * [Docker for Mac](https://docs.docker.com/docker-for-mac/)
