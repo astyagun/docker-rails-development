@@ -6,20 +6,43 @@ Depends on [docker-sync](http://docker-sync.io) to share source code between hos
 
 ## Installation
 
+### Docker configuration files
+
+#### Copy Docker configuration files into you project directory
+
+Copy them manually or:
+
 * Clone this repository into directory next to the directory of your project
 * `cd` into your project directory
 * Run `../docker-rails-development/install`
-* Update Ruby version in `*.dockerfile` files
-* Replace `myapp` with your app name (as used in Docker Compose container names, as seen in output of `docker ps`) in `docker-sync.yml` file
-* Install dependencies
-  * [Docker for Mac](https://docs.docker.com/docker-for-mac/)
-  * [docker-sync](http://docker-sync.io) for fast access to local code from containers
+
+#### Update configuration files to fit your project
+
+* Update Ruby version at the first lines of `*.dockerfile` files
+* In `docker-sync.yml` file: replace `myapp` with your app name (as used in Docker Compose container names, as seen in output of `docker ps`)
+
+### Make sure dependencies are installed
+
+* [Docker for Mac](https://docs.docker.com/docker-for-mac/)
+* [docker-sync](http://docker-sync.io) for fast access to local code from containers
+
+### Prepare the environment
+
+#### When installing for existing application
+
+* Make sure all the required gems (such as Spring and Sidekiq, for example) are in the `Gemfile`, then run:
+  ```sh
+  docker-sync start
+  docker-compose run --rm spring bundle install
+  ```
+
+#### When creating a new application
+
 * Install Rails gem from a container
   ```sh
-  docker-compose up -d # This will return errors, because there are no required executables in containers yet
   docker-compose run --rm spring gem install rails
   ```
-* Generate a new Rails application and install bundled gems. Customize `rails new` command as needed.
+* FIXME: Following commands don't always work as expected when copied and pasted into Terminal. Run the following code to generate a new Rails application and install bundled gems. Customize the `rails new` command as needed.
   ```sh
   APP_NAME=`basename $(pwd)`
   docker-sync start
@@ -27,14 +50,8 @@ Depends on [docker-sync](http://docker-sync.io) to share source code between hos
   mv $APP_NAME/* $APP_NAME/.* .
   rm -rf $APP_NAME/
   ```
-* If you already have existing Rails application and all the required gems are in the `Gemfile` (such as Spring for tests and Sidekiq, for example), then you only need to run
-  ```sh
-  docker-sync start
-  docker-compose up -d # This will return errors, because there are no required executables in containers yet
-  docker-compose run --rm spring bundle install
-  ```
 
-## Usage
+## Starting containers
 
 Having below aliases defined, run in the shell:
 
