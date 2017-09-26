@@ -19,7 +19,7 @@ RUN apt-get update \
 RUN adduser --disabled-password --gecos '' app
 USER app
 
-# Vim
+# Vim (for `rails secrets:edit`) settings
 RUN echo "\
 syntax on\n\
 filetype plugin indent on\n\
