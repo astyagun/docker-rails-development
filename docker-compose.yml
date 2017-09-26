@@ -29,10 +29,10 @@ services:
       - postgres
       - redis
 
-  tests:
+  spring:
     build:
       context: .
-      dockerfile: tests.dockerfile
+      dockerfile: spring.dockerfile
     env_file: .env
     volumes:
       - code:/usr/src/app:nocopy

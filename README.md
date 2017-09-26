@@ -17,13 +17,13 @@ Depends on [docker-sync](http://docker-sync.io) to share source code between hos
 * Install Rails gem from a container
   ```sh
   docker-compose up -d # This will return errors, because there are no required executables in containers yet
-  docker-compose run --rm tests gem install rails
+  docker-compose run --rm spring gem install rails
   ```
 * Generate a new Rails application and install bundled gems. Customize `rails new` command as needed.
   ```sh
   APP_NAME=`basename $(pwd)`
   docker-sync start
-  docker-compose run --rm tests rails new $APP_NAME
+  docker-compose run --rm spring rails new $APP_NAME
   mv $APP_NAME/* $APP_NAME/.* .
   rm -rf $APP_NAME/
   ```
@@ -31,7 +31,7 @@ Depends on [docker-sync](http://docker-sync.io) to share source code between hos
   ```sh
   docker-sync start
   docker-compose up -d # This will return errors, because there are no required executables in containers yet
-  docker-compose run --rm tests bundle install
+  docker-compose run --rm spring bundle install
   ```
 
 ## Usage
@@ -54,13 +54,13 @@ docker-compose up -d
 Following aliases depend on these: https://github.com/sorin-ionescu/prezto/tree/master/modules/docker
 
 ```sh
-alias dt='dkce tests'
+alias ds='dkce spring'
 alias up='docker-sync start; dkc up -d'
 alias start='docker-sync start &; dkc up -d &; wait'
 alias stop='docker-sync stop &; dkc stop &; wait'
 alias down='dkc down; docker-sync clean'
 alias dsr='docker-sync stop && docker-sync start'
-function rspec() { dt bash -ic "./bin/rspec $*" }
+function rspec() { ds bash -ic "./bin/rspec $*" }
 ```
 
 ## Files and directories to add to .gitignore
