@@ -77,7 +77,7 @@ alias start='docker-sync start &; dkc up -d &; wait'
 alias stop='docker-sync stop &; dkc stop &; wait'
 alias down='dkc down; docker-sync clean'
 alias dsr='docker-sync stop && docker-sync start'
-function rspec() { ds bash -ic "./bin/rspec $*" }
+alias rspec='ds ./bin/rspec'
 ```
 
 ## Files and directories to add to .gitignore
