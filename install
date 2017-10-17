@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'fileutils'
 
-FILES = %w(docker-sync.yml docker-compose.yml *.dockerfile .env)
+FILES = %w(docker-compose.yml *.dockerfile .env)
 HELP_MESSAGE = <<-HLP
 
 Usage: ../docker-rails-development/install
@@ -19,7 +19,20 @@ if destination_directory == source_directory
   exit 1
 end
 
+# Copy files
 FILES.each do |file_glob|
   source_file = Dir.glob File.join(source_directory, file_glob)
   FileUtils.cp source_file, destination_directory, verbose: true
 end
+
+# Set project name in container name in docker-sync.yml
+# Generating project name like Docker Compose does:
+#   https://github.com/docker/compose/blob/master/compose/cli/command.py#L108
+project_name     = File.basename(Dir.getwd).gsub(/[^A-Za-z0-9]/, '').downcase
+template_path    = File.join source_directory, 'docker-sync.yml.erb'
+template         = File.read template_path
+rendered         = template.gsub '<%= project_name %>', project_name
+destination_path = File.join destination_directory, 'docker-sync.yml'
+
+File.write destination_path, rendered
+puts "Render #{template_path} to #{destination_path}"

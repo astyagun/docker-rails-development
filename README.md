@@ -19,7 +19,6 @@ Copy them manually or:
 #### Update configuration files to fit your project
 
 * Update Ruby version at the first lines of `*.dockerfile` files
-* In `docker-sync.yml` file: replace `myapp` with your app name (as used in Docker Compose container names, as seen in output of `docker ps`)
 
 ### Make sure dependencies are installed
 
