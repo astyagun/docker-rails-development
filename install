@@ -10,6 +10,10 @@ Run this script being in destination directory to copy Docker files into it
 
 HLP
 
+def report_existing(file)
+  puts "Skipping #{file}, destination file already exists"
+end
+
 source_directory      = File.dirname File.expand_path __FILE__
 destination_directory = Dir.pwd
 
@@ -21,8 +25,15 @@ end
 
 # Copy files
 FILES.each do |file_glob|
-  source_file = Dir.glob File.join(source_directory, file_glob)
-  FileUtils.cp source_file, destination_directory, verbose: true
+  source_paths = Dir.glob File.join(source_directory, file_glob)
+  source_paths.each do |source_path|
+    destination_path = File.join destination_directory, File.basename(source_path)
+    if File.exist? destination_path
+      report_existing source_path
+    else
+      FileUtils.cp source_path, destination_path, verbose: true
+    end
+  end
 end
 
 # Set project name in container name in docker-sync.yml
@@ -34,5 +45,9 @@ template         = File.read template_path
 rendered         = template.gsub '<%= project_name %>', project_name
 destination_path = File.join destination_directory, 'docker-sync.yml'
 
-File.write destination_path, rendered
-puts "Render #{template_path} to #{destination_path}"
+unless File.exist? destination_path
+  File.write destination_path, rendered
+  puts "Render #{template_path} to #{destination_path}"
+else
+  report_existing destination_path
+end
