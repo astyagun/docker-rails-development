@@ -1,5 +1,6 @@
 FROM ruby:2.4
-#
+
+# TODO: Replace PhantomJS with Chrome headless
 # Install PhantomJS
 RUN mkdir /tmp/phantomjs \
   && curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 \
