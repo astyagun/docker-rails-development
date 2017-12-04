@@ -9,11 +9,11 @@ RUN mkdir /tmp/phantomjs \
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-  \
-  less \
-  nodejs \
-  vim \
-  \
+    \
+    less \
+    nodejs \
+    vim \
+    \
   && rm -rf /var/lib/apt/lists/*
 
 # Create user
