@@ -11,9 +11,6 @@ RUN apt-get update \
 RUN adduser --disabled-password --gecos '' app
 USER app
 
-# Various settings
-RUN bundle config jobs 4
-
 WORKDIR /usr/src/app
 
 EXPOSE 3000
