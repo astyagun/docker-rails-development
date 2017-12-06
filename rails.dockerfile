@@ -5,6 +5,7 @@ RUN apt-get update \
     \
     nodejs \
     \
+  && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 # Create user

@@ -14,6 +14,7 @@ RUN apt-get update \
     nodejs \
     vim \
     \
+  && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 # Create user
