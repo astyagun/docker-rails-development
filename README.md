@@ -70,12 +70,19 @@ docker-compose up -d
 Following aliases depend on these: https://github.com/sorin-ionescu/prezto/tree/master/modules/docker
 
 ```sh
+# Docker
 alias ds='dkce spring'
 alias up='docker-sync start; dkc up -d'
 alias start='docker-sync start &; dkc up -d &; wait'
 alias stop='docker-sync stop &; dkc stop &; wait'
 alias down='dkc down; docker-sync clean'
 alias dsr='docker-sync stop && docker-sync start'
+
+# Rails in Docker
+alias bundle='ds ./bin/bundle'
+alias cucumber='ds ./bin/cucumber'
+alias rails='ds ./bin/rails'
+alias rake='ds ./bin/rake'
 alias rspec='ds ./bin/rspec'
 ```
 
