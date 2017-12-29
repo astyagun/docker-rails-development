@@ -22,13 +22,14 @@ RUN apt-get update \
 RUN adduser --disabled-password --gecos '' app
 USER app
 
-# Vim (for `rails secrets:edit`) settings
+# Vim (for `rails secrets:edit`) and Bash settings
 RUN echo "\
 syntax on\n\
 filetype plugin indent on\n\
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab number laststatus=2 title hlsearch incsearch\n\
 autocmd BufRead *.yml.enc set filetype=eruby.yaml\n"\
-  > ~/.vimrc
+  > ~/.vimrc \
+  && echo alias la=ls -la >> ~/.bashrc
 ENV EDITOR=vim
 
 # Various settings
