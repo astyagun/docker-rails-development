@@ -29,7 +29,7 @@ filetype plugin indent on\n\
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab number laststatus=2 title hlsearch incsearch\n\
 autocmd BufRead *.yml.enc set filetype=eruby.yaml\n"\
     > ~/.vimrc \
-  && echo alias la=ls -la >> ~/.bashrc
+  && echo alias la=ls -lhA >> ~/.bashrc
 ENV EDITOR=vim
 
 # Various settings
