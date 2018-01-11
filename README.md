@@ -76,7 +76,8 @@ alias up='docker-sync start; dkc up -d'
 alias start='docker-sync start &; dkc up -d &; wait'
 alias stop='docker-sync stop &; dkc stop &; wait'
 alias down='dkc down; docker-sync clean'
-alias dsr='docker-sync stop && docker-sync start'
+alias dksc='docker-sync'
+alias dkscr='dksc stop && dksc start'
 
 # Rails in Docker
 alias bundle='ds ./bin/bundle'
