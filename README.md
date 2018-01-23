@@ -75,7 +75,7 @@ alias ds='dkce spring'
 alias dksc='docker-sync'
 alias up='dksc start; dkcU'
 alias start='dksc start &; dkcU &; wait'
-alias stop='dksc stop &; dkcs &; wait'
+alias stop='dksc stop &; dkcx &; wait'
 alias down='dkcd; dksc clean'
 alias dkscr='dksc stop && dksc start'
 
