@@ -2,7 +2,6 @@ FROM ruby:2.5
 
 # Install application dependencies
 RUN set -ex \
-  \
   && echo Installing application dependencies... \
   && apt-get update \
   && apt-get install -y --no-install-recommends \
@@ -13,12 +12,10 @@ RUN set -ex \
 # Run as root
 
 RUN set -ex \
-  \
   && echo Updating RubyGems... \
   && gem update --system
 
 RUN set -ex \
-  \
   && echo Writing docker-entrypoint... \
   && echo "#!/bin/sh\n\
 rm -f tmp/pids/server.pid\n\

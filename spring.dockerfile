@@ -3,7 +3,6 @@ FROM ruby:2.5
 # TODO: Replace PhantomJS with Chrome headless
 # Install PhantomJS
 RUN set -ex \
-  \
   && echo Installing PhantomJS... \
   && mkdir /tmp/phantomjs/ \
   && curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 \
@@ -13,7 +12,6 @@ RUN set -ex \
 
 # Install application dependencies
 RUN set -ex \
-  \
   && echo Installing applicaiton dependencies... \
   && apt-get update \
   && apt-get install -y --no-install-recommends \
@@ -26,12 +24,10 @@ RUN set -ex \
 # Run as root
 
 RUN set -ex \
-  \
   && echo Updating RubyGems... \
   && gem update --system
 
 RUN set -ex \
-  \
   && echo Writing docker-entrypoint... \
   && echo "#!/bin/sh\n\
 rm -rf /tmp/.X0-lock /tmp/.X11-unix /tmp/spring-1000\n\
@@ -46,7 +42,6 @@ USER app
 
 # Run as user
 RUN set -ex \
-  \
   && echo Writing Vim settings... \
   && echo "\
 syntax on\n\
