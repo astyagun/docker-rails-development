@@ -72,12 +72,12 @@ Following aliases depend on these: https://github.com/sorin-ionescu/prezto/tree/
 ```sh
 # Docker
 alias ds='dkce spring'
-alias dksc='docker-sync'
-alias up='dksc start; dkcU'
-alias start='dksc start &; dkcU &; wait'
-alias stop='dksc stop &; dkcx &; wait'
-alias down='dkcd; dksc clean'
-alias dkscr='dksc stop && dksc start'
+alias dksyn='docker-sync'
+alias up='dksyn start; dkcU'
+alias start='dksyn start &; dkcU &; wait'
+alias stop='dksyn stop &; dkcx &; wait'
+alias down='dkcd; dksyn clean'
+alias dksynr='dksyn stop && dksyn start'
 
 # Rails in Docker
 alias bundle='ds ./bin/bundle'
