@@ -22,7 +22,6 @@ RUN set -ex \
   && rm -rf /var/lib/apt/lists/*
 
 # Run as root
-
 RUN set -ex \
   && echo Updating RubyGems... \
   && gem update --system
