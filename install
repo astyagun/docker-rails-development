@@ -38,8 +38,8 @@ end
 
 # Set project name in container name in docker-sync.yml
 # Generating project name like Docker Compose does:
-#   https://github.com/docker/compose/blob/master/compose/cli/command.py#L108
-project_name     = File.basename(Dir.getwd).gsub(/[^A-Za-z0-9]/, '').downcase
+#   https://github.com/docker/compose/blob/520f5d0fdece26862c622c33007775400a9b9000/compose/cli/command.py#L132
+project_name     = File.basename(Dir.getwd).downcase.gsub(/[^-_a-z0-9]/, '')
 template_path    = File.join source_directory, 'docker-sync.yml.erb'
 template         = File.read template_path
 rendered         = template.gsub '<%= project_name %>', project_name
