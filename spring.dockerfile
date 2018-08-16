@@ -12,7 +12,7 @@ RUN set -ex \
 
 # Install application dependencies
 RUN set -ex \
-  && echo Installing applicaiton dependencies... \
+  && echo Installing application dependencies... \
   && apt-get update \
   && apt-get install -y --no-install-recommends \
     less \
