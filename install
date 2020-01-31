@@ -1,41 +1,41 @@
 #!/usr/bin/env ruby
 require 'fileutils'
 
-FILES = %w(docker-compose.yml *.dockerfile .env)
+FILES = %w[
+  .docker.env
+  DOCKER.LOCAL.md
+  bin
+  config
+  development.docker
+  docker-compose.yml
+]
 HELP_MESSAGE = <<-HLP
 
 Usage: ../docker-rails-development/install
 
-Run this script being in destination directory to copy Docker files into it
+Run this script to copy Docker files into current directory
 
 HLP
 
-def report_existing(file)
-  puts "Skipping #{file}, destination file already exists"
+if ARGV.include?('-h') || ARGV.include?('--help')
+  puts HELP_MESSAGE
+  exit
 end
 
 source_directory      = File.dirname File.expand_path __FILE__
 destination_directory = Dir.pwd
 
 if destination_directory == source_directory
-  puts "Error: won't copy files into the same directory"
+  puts "Error: doesn't make sense to copy files into the same directory"
   puts HELP_MESSAGE
   exit 1
 end
 
 # Copy files
-FILES.each do |file_glob|
-  source_paths = Dir.glob File.join(source_directory, file_glob)
-  source_paths.each do |source_path|
-    destination_path = File.join destination_directory, File.basename(source_path)
-    if File.exist? destination_path
-      report_existing source_path
-    else
-      FileUtils.cp source_path, destination_path, verbose: true
-    end
-  end
-end
+source_paths = FILES.map { |file_name| File.join source_directory, file_name }
+FileUtils.cp_r source_paths, destination_directory, verbose: true
 
+# Copy docker-sync.yml
 # Set project name in container name in docker-sync.yml
 # Generating project name like Docker Compose does:
 #   https://github.com/docker/compose/blob/520f5d0fdece26862c622c33007775400a9b9000/compose/cli/command.py#L132
@@ -47,7 +47,7 @@ destination_path = File.join destination_directory, 'docker-sync.yml'
 
 unless File.exist? destination_path
   File.write destination_path, rendered
-  puts "Render #{template_path} to #{destination_path}"
+  puts "Rendered #{template_path} to #{destination_path}"
 else
-  report_existing destination_path
+  puts "Skipping #{destination_path}, it already exists"
 end

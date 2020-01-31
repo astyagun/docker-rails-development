@@ -1,11 +1,27 @@
+# Local development environment
 ---
-version: '3.1'
+version: '3.7'
 services:
+  spring:
+    build:
+      context: .
+      dockerfile: development.docker
+    env_file: .docker.env
+    volumes:
+      - code:/usr/src/app:nocopy
+      - bundle:/usr/local/bundle
+    depends_on:
+      - postgres
+      - redis
+
   rails:
     build:
       context: .
-      dockerfile: rails.dockerfile
-    env_file: .docker_env
+      dockerfile: development.docker
+    env_file: .docker.env
+    command: bin/docker-rails-server
+    stdin_open: true
+    tty: true
     volumes:
       - bundle:/usr/local/bundle
       - code:/usr/src/app:nocopy
@@ -14,13 +30,12 @@ services:
     depends_on:
       - postgres
       - redis
-      - sidekiq
 
   sidekiq:
     build:
       context: .
-      dockerfile: rails.dockerfile
-    env_file: .docker_env
+      dockerfile: development.docker
+    env_file: .docker.env
     command: sidekiq
     volumes:
       - bundle:/usr/local/bundle
@@ -29,25 +44,13 @@ services:
       - postgres
       - redis
 
-  spring:
-    build:
-      context: .
-      dockerfile: spring.dockerfile
-    env_file: .docker_env
-    volumes:
-      - code:/usr/src/app:nocopy
-      - bundle:/usr/local/bundle
-    depends_on:
-      - postgres
-      - redis
-
   postgres:
-    image: postgres:10
+    image: postgres:11.6
     volumes:
       - postgres:/var/lib/postgresql/data
 
   redis:
-    image: redis
+    image: redis:5.0.7
     volumes:
       - redis:/data
 

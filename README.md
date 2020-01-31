@@ -1,8 +1,8 @@
-# Docker Rails development
+# Docker Rails development environment
 
 Docker based Rails development environment for macOS
 
-Depends on [docker-sync](http://docker-sync.io) to share source code between host and containers. At least until the native solution is as fast on macOS (see related Docker for Mac [issue](https://github.com/docker/for-mac/issues/77)).
+Depends on [docker-sync](http://docker-sync.io) to share source code between host and containers, which is the most performant way currently
 
 ## Installation
 
@@ -18,7 +18,7 @@ Copy them manually or:
 
 #### Update configuration files to fit your project
 
-* Update Ruby version at the first lines of `*.dockerfile` files
+* Update Ruby version at the first lines of `*.docker` files
 
 ### Make sure dependencies are installed
 
@@ -37,68 +37,14 @@ Copy them manually or:
 
 #### When creating a new application
 
-* Install Rails gem from a container
+Run the following script to generate a new Rails application. Arguments are passed to the call of the `rails new` command. Customize them as needed.
   ```sh
-  docker-compose run --rm spring gem install rails
+  ../docker-rails-development/rails-new --database=postgresql --skip-git --skip-test
   ```
-* FIXME: Following commands don't always work as expected when copied and pasted into Terminal. Run the following code to generate a new Rails application and install bundled gems. Customize the `rails new` command as needed.
-  ```sh
-  APP_NAME=`basename $(pwd)`
-  docker-sync start
-  docker-compose run --rm spring rails new $APP_NAME
-  mv $APP_NAME/* $APP_NAME/.* .
-  rm -rf $APP_NAME/
-  ```
-
-## Starting containers
-
-Having below aliases defined, run in the shell:
-
-```sh
-up
-```
-
-Otherwise:
-
-```sh
-docker-sync start
-docker-compose up -d
-```
-
-## Useful shell aliases
-
-Following aliases depend on these: https://github.com/sorin-ionescu/prezto/tree/master/modules/docker
-
-```sh
-# Docker
-alias ds='dkce spring'
-alias dksyn='docker-sync'
-alias up='dksyn start; dkcU'
-alias start='dksyn start &; dkcU &; wait'
-alias stop='dksyn stop &; dkcx &; wait'
-alias down='dkcd; dksyn clean'
-alias dksynr='dksyn stop && dksyn start'
-
-# Rails in Docker
-alias bundle='ds ./bin/bundle'
-alias cucumber='ds ./bin/cucumber'
-alias rails='ds ./bin/rails'
-alias rake='ds ./bin/rake'
-alias rspec='ds ./bin/rspec'
-```
 
 ## Files and directories to add to .gitignore
 
 ```
 # Docker
 /.docker-sync/
-```
-
-And these, if you don't want to commit anything related to Docker into the repository:
-
-```
-/*.dockerfile
-/.env
-/docker-compose.yml
-/docker-sync.yml
 ```

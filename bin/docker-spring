@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+rm -rf /tmp/.X0-lock /tmp/.X11-unix /tmp/spring-1000
+Xvfb :0 &
+spring server

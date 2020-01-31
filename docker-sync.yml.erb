@@ -1,5 +1,3 @@
-# It makes sense to use Docker Sync until the native solution is as fast on macOS (see related Docker for Mac
-# issue: https://github.com/docker/for-mac/issues/77).
 ---
 version: '2'
 syncs:
@@ -16,10 +14,5 @@ syncs:
       - "-ignore='Name .gitignore'"
       - "-ignore='Path .docker-sync'"
       - "-ignore='Path .git'"           # Ignore the main .git repo
-      - "-ignore='Path .sass-cache'"
-      - "-ignore='Path GPATH'"
-      - "-ignore='Path GRTAGS'"
-      - "-ignore='Path GTAGS'"
       - "-ignore='Path log'"
-      - "-ignore='Path node_modules'"
       - "-ignore='Path tmp/cache'"

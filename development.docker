@@ -1,0 +1,33 @@
+FROM ruby:2.7.0
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    less \
+    nodejs \
+    npm \
+    postgresql-client-11 \
+    vim \
+    xauth \
+    xvfb \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g yarn
+
+# Reasons for installing packages
+# - less: better pager, for Pry in particular, but not only
+# - nodejs: assets compilation
+# - npm: yarn
+# - postgresql-client-11: rails dbconsole
+# - vim: rails secrets:edit, rails credentials:edit, bundle open, etc.
+# - xauth and xvfb: headless browser testing
+# - yarn: webpacker
+
+RUN adduser --disabled-password --gecos '' app
+USER app
+
+COPY config/docker.vimrc ~/.vimrc
+RUN bundle config jobs $(nproc --ignore=1)
+ENV EDITOR=vim DISPLAY=:0
+WORKDIR /usr/src/app
+
+CMD ["bin/docker-spring"]
