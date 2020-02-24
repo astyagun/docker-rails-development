@@ -54,6 +54,19 @@ services:
     volumes:
       - redis:/data
 
+  solargraph:
+    build:
+      context: .
+      dockerfile: development.docker
+    working_dir: $PWD
+    env_file: .docker.env
+    command: solargraph socket --host 0.0.0.0 --port 7658
+    volumes:
+      - code:$PWD:nocopy
+      - bundle:/usr/local/bundle
+    ports:
+      - 7658:7658
+
 volumes:
   bundle:
   code:

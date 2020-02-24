@@ -26,7 +26,8 @@ RUN adduser --disabled-password --gecos '' app
 USER app
 
 COPY config/docker.vimrc ~/.vimrc
-RUN bundle config jobs $(nproc --ignore=1)
+RUN gem install solargraph && solargraph download-core
+RUN bundle config set jobs $(nproc --ignore=1)
 ENV EDITOR=vim DISPLAY=:0
 WORKDIR /usr/src/app
 
