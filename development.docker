@@ -26,9 +26,17 @@ RUN adduser --disabled-password --gecos '' app
 USER app
 
 COPY config/docker.vimrc ~/.vimrc
-RUN gem install solargraph && solargraph download-core
 RUN bundle config set jobs $(nproc --ignore=1)
 ENV EDITOR=vim DISPLAY=:0
+
+# Setup the Solargraph LSP server for code autocompletion and navigation
+RUN gem install solargraph && solargraph download-core
+# For the "Go to definition" feature: make gems available on the host matchine
+RUN bundle config set path vendor/bundle
+# Allow running bundled gems executables without using `bundle exec`
+ENV GEM_PATH=/usr/src/app/vendor/bundle/ruby/2.7.0:/usr/local/lib/ruby/gems/2.7.0:/usr/local/bundle
+ENV PATH=/usr/src/app/vendor/bundle/ruby/2.7.0/bin:$PATH
+
 WORKDIR /usr/src/app
 
 CMD ["bin/docker-spring"]

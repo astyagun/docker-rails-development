@@ -9,7 +9,6 @@ services:
     env_file: .docker.env
     volumes:
       - code:/usr/src/app:nocopy
-      - bundle:/usr/local/bundle
     depends_on:
       - postgres
       - redis
@@ -23,7 +22,6 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - bundle:/usr/local/bundle
       - code:/usr/src/app:nocopy
     ports:
       - "${PORT:-3000}:3000"
@@ -38,7 +36,6 @@ services:
     env_file: .docker.env
     command: sidekiq
     volumes:
-      - bundle:/usr/local/bundle
       - code:/usr/src/app:nocopy
     depends_on:
       - postgres
@@ -60,15 +57,16 @@ services:
       dockerfile: development.docker
     working_dir: $PWD
     env_file: .docker.env
+    environment:
+      GEM_PATH: $PWD/vendor/bundle/ruby/2.7.0:/usr/local/lib/ruby/gems/2.7.0:/usr/local/bundle
+      PATH: $PWD/vendor/bundle/ruby/2.7.0/bin:/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     command: solargraph socket --host 0.0.0.0 --port 7658
     volumes:
       - code:$PWD:nocopy
-      - bundle:/usr/local/bundle
     ports:
       - 7658:7658
 
 volumes:
-  bundle:
   code:
   postgres:
   redis:
