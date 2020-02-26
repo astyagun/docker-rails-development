@@ -30,6 +30,7 @@ Copy them manually or:
 #### When installing for existing application
 
 * Make sure all the required gems (such as Spring and Sidekiq, for example) are in the `Gemfile`, then run:
+
   ```sh
   docker-sync start
   docker-compose run --rm spring bundle install
@@ -38,13 +39,14 @@ Copy them manually or:
 #### When creating a new application
 
 Run the following script to generate a new Rails application. Arguments are passed to the call of the `rails new` command. Customize them as needed.
+
   ```sh
   ../docker-rails-development/rails-new --database=postgresql --skip-git --skip-test
   ```
 
 ## Files and directories to add to .gitignore
 
-```
+```gitignore
 # Docker
 /.docker-sync/
 /config/solargraph_hints.rb
