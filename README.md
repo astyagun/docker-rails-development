@@ -47,4 +47,5 @@ Run the following script to generate a new Rails application. Arguments are pass
 ```
 # Docker
 /.docker-sync/
+/config/solargraph_hints.rb
 ```
