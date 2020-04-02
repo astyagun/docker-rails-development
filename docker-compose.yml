@@ -58,8 +58,8 @@ services:
     working_dir: $PWD
     env_file: .docker.env
     environment:
-      GEM_PATH: $PWD/vendor/bundle/ruby/2.7.0:/usr/local/lib/ruby/gems/2.7.0:/usr/local/bundle
-      PATH: $PWD/vendor/bundle/ruby/2.7.0/bin:/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      GEM_PATH: $PWD/vendor/bundle/ruby/2.7.1:/usr/local/lib/ruby/gems/2.7.1:/usr/local/bundle
+      PATH: $PWD/vendor/bundle/ruby/2.7.1/bin:/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     command: solargraph socket --host 0.0.0.0 --port 7658
     volumes:
       - code:$PWD:nocopy
