@@ -3,6 +3,7 @@
 ## Setup
 
 Requirements:
+
 * macOS (haven't tested on other platforms)
 * [Docker for Mac](https://docs.docker.com/docker-for-mac/)
 * [docker-sync](http://docker-sync.io)
@@ -18,7 +19,7 @@ docker-compose up -d
 docker-compose ps
 ```
 
-If all containers are "Up", visit http://localhost:3000 to check if the application is running
+If all containers are "Up", visit <http://localhost:3000> to check if the application is running
 
 ## Usage
 
@@ -32,7 +33,7 @@ docker-compose exec spring bash
 
 ## Recommended Zsh aliases
 
-https://github.com/akarzim/zsh-docker-aliases
+<https://github.com/akarzim/zsh-docker-aliases>
 
 ```sh
 # Docker
