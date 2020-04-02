@@ -26,7 +26,7 @@ If all containers are "Up", visit <http://localhost:3000> to check if the applic
 Run all commands through the Spring container. Examples:
 
 ```sh
-docker-compose exec -e RAILS_ENV=test spring spring rspec
+docker-compose exec spring spring rspec
 docker-compose exec spring spring rake db:migrate
 docker-compose exec spring bash
 ```
