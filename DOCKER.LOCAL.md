@@ -13,7 +13,7 @@ docker-sync start
 docker-compose build
 
 docker-compose run --rm spring bundle install
-docker-compose run --rm spring rake db:setup
+docker-compose run --rm spring rails db:prepare
 
 docker-compose up -d
 docker-compose ps
