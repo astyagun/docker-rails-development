@@ -1,0 +1,18 @@
+---
+common: &default
+  adapter: postgresql
+  host: postgres
+  password: postgres
+  user: postgres
+
+development:
+  <<: *default
+  database: development
+
+test:
+  <<: *default
+  database: test
+
+production:
+  <<: *default
+  database: development
