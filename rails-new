@@ -1,8 +1,24 @@
 #!/usr/bin/env bash
 
-APP_NAME=`basename $(pwd)`
+# Use parent directory name as application name by default
+# Allow setting custom application name
+if [[ $1 == -* ]]; then
+  APP_NAME=$(basename "$(pwd)")
+else
+  APP_NAME=$1
+  shift
+fi
 
-docker-sync start
-docker-compose run --rm spring gem install rails
-docker-compose run --rm spring rails new $APP_NAME "$@"
-docker-compose run --rm spring sh -c 'cp -iR '$APP_NAME'/. . && rm -rf '$APP_NAME
+# Prepare the environment required to run `rails new`
+docker-sync logs >/dev/null || docker-sync start
+docker-compose run --rm spring sh -c \
+  'which rails >/dev/null || gem install rails --install-dir vendor/bundle/ruby/2.7.0'
+
+# Allow reading --help
+if [[ $1 == -h ]] || [[ $1 == --help ]]; then
+  docker-compose run --rm spring rails new --help
+else
+  rm -rf node_modules
+  docker-compose run --rm -e BUNDLE_PATH=../vendor/bundle spring rails new "$APP_NAME" "$@"
+  docker-compose run --rm spring sh -c 'cp -iR '"$APP_NAME"'/. . && rm -rf '"$APP_NAME"
+fi

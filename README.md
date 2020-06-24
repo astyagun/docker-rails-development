@@ -38,10 +38,23 @@ Copy them manually or:
 
 #### When creating a new application
 
-Run the following script to generate a new Rails application. Arguments are passed to the call of the `rails new` command. Customize them as needed.
+Run one of the following commands to generate a new Rails application. Arguments are passed to the call of the `rails new` command. Customize them as needed.
 
-  ```sh
-  ../docker-rails-development/rails-new --database=postgresql --skip-git --skip-test
+```sh
+# Use current directory name as application name by default
+../docker-rails-development/rails-new --database=postgresql --skip-git --skip-test
+```
+
+Or
+
+```sh
+../docker-rails-development/rails-new custom_app_name --database=postgresql --skip-git --skip-test
+```
+
+You can also refer to the help:
+
+```sh
+../docker-rails-development/rails-new --help
   ```
 
 ## Files and directories to add to .gitignore
