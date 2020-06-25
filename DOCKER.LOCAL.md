@@ -51,5 +51,5 @@ alias up='dksyn start; dkcU'
 alias bundle='ds ./bin/bundle'
 alias rails='ds ./bin/rails'
 alias rake='ds ./bin/rake'
-alias rspec='ds ./bin/rspec'
+alias rspec='dst ./bin/rspec'
 ```
