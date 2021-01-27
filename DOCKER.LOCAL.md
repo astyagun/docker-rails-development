@@ -28,6 +28,7 @@ Run all commands through the Spring container. Examples:
 ```sh
 docker-compose exec spring spring rspec
 docker-compose exec spring spring rake db:migrate
+docker-compose exec spring tail -f log/development.log
 docker-compose exec spring bash
 ```
 
