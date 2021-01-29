@@ -1,12 +1,12 @@
-# Docker local development environment
+# Docker-based local development environment
 
 ## Setup
 
 Requirements:
 
-* macOS (haven't tested on other platforms)
-* [Docker for Mac](https://docs.docker.com/docker-for-mac/)
-* [docker-sync](http://docker-sync.io)
+- macOS
+- [Docker for Mac](https://docs.docker.com/docker-for-mac/)
+- [docker-sync](http://docker-sync.io)
 
 ```sh
 docker-sync start
@@ -23,7 +23,7 @@ If all containers are "Up", visit <http://localhost:3000> to check if the applic
 
 ## Usage
 
-Run all commands through the Spring container. Examples:
+Run all shell commands through the Spring container. Examples:
 
 ```sh
 docker-compose exec spring spring rspec
@@ -48,9 +48,9 @@ alias start='dksyn start &; dkcU &; wait'
 alias stop='dksyn stop &; dkcx &; wait'
 alias up='dksyn start; dkcU'
 
-# Rails in Docker
-alias bundle='ds ./bin/bundle'
-alias rails='ds ./bin/rails'
-alias rake='ds ./bin/rake'
-alias rspec='dst ./bin/rspec'
+# Ruby and Rails in Docker
+alias bundle='ds bundle'
+alias rails='ds spring rails'
+alias rake='ds spring rake'
+alias rspec='dst spring rspec'
 ```
