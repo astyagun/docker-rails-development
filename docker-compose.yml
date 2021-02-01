@@ -9,7 +9,7 @@ services:
       dockerfile: development.docker
     env_file: .docker.env
     volumes:
-      - code:/usr/src/app:nocopy
+      - code:/app:nocopy
     depends_on:
       - postgres
       - redis
@@ -23,7 +23,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - code:/usr/src/app:nocopy
+      - code:/app:nocopy
     ports:
       - "${PORT:-3000}:3000"
     depends_on:
@@ -37,7 +37,7 @@ services:
     env_file: .docker.env
     command: sidekiq
     volumes:
-      - code:/usr/src/app:nocopy
+      - code:/app:nocopy
     depends_on:
       - postgres
       - redis

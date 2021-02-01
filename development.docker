@@ -34,9 +34,9 @@ RUN gem install solargraph && solargraph download-core
 # For the "Go to definition" feature: make gems available on the host matchine
 RUN bundle config set path vendor/bundle
 # Allow running bundled gems executables without using `bundle exec`
-ENV GEM_PATH=/usr/src/app/vendor/bundle/ruby/2.7.0:/usr/local/lib/ruby/gems/2.7.0:/usr/local/bundle
-ENV PATH=/usr/src/app/vendor/bundle/ruby/2.7.0/bin:$PATH
+ENV GEM_PATH=/app/vendor/bundle/ruby/2.7.0:/usr/local/lib/ruby/gems/2.7.0:/usr/local/bundle
+ENV PATH=/app/vendor/bundle/ruby/2.7.0/bin:$PATH
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 CMD ["bin/docker-spring"]
