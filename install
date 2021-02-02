@@ -3,7 +3,7 @@ require 'fileutils'
 
 FILES = %w[
   .docker.env
-  DOCKER.LOCAL.md
+  DEVELOPMENT.DOCKER.md
   bin
   config
   development.docker

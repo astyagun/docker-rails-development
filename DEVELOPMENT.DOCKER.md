@@ -10,7 +10,6 @@ Requirements:
 
 ```sh
 docker-sync start
-docker-compose build
 
 docker-compose run --rm spring bundle install
 docker-compose run --rm spring rails db:prepare
@@ -32,7 +31,7 @@ docker-compose exec spring tail -f log/development.log
 docker-compose exec spring bash
 ```
 
-## Recommended Zsh aliases
+### Recommended Zsh aliases
 
 <https://github.com/akarzim/zsh-docker-aliases>
 
