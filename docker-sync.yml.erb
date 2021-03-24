@@ -12,7 +12,8 @@ syncs:
       - "-ignore='Name .*.swp'"
       - "-ignore='Name .git'"           # Ignore .git repos in subfolders such as in composer vendor dirs
       - "-ignore='Name .gitignore'"
-      - "-ignore='Name log/*'"
       - "-ignore='Path .docker-sync'"
       - "-ignore='Path .git'"           # Ignore the main .git repo
+      - "-ignore='Path log/*.log'"
+      - "-ignore='Path node_modules'"
       - "-ignore='Path tmp/cache'"
