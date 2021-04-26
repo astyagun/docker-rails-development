@@ -38,7 +38,9 @@ docker-compose exec spring bash
 ```sh
 # Docker
 alias dksyn='docker-sync'
+alias dksynl='dksyn logs'
 alias dksynr='dksyn stop && dksyn start'
+alias dksynw="watch 'docker-sync logs | tail -n40'"
 alias down='dkcd; dksyn clean'
 alias ds='dkce spring'
 alias dsd='dkce --env RAILS_ENV=development spring'
